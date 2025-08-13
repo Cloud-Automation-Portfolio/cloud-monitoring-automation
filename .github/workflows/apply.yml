@@ -26,3 +26,10 @@ jobs:
           echo "--- Decoded Header ---"
           echo "$TOKEN" | cut -d "." -f1 | base64 -d
           echo "--- Decoded Payload ---"
+          echo "$TOKEN" | cut -d "." -f2 | base64 -d
+
+      - name: Configure AWS credentials from OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
