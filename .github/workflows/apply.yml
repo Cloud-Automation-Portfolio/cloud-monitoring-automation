@@ -1,4 +1,4 @@
-name: Terraform Apply AWS (Debug OIDC)
+name: Debug OIDC Token
 
 on:
   workflow_dispatch:
@@ -14,22 +14,15 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Request GitHub OIDC token
-        id: oidc
+      - name: Request GitHub OIDC token and decode
         run: |
-          echo "Fetching OIDC token..."
+          echo "Requesting OIDC token..."
           TOKEN=$(curl -sLS \
             -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-            "$ACTIONS_ID_TOKEN_REQUEST_URL?audience=sts.amazonaws.com" | jq -r '.value')
-          echo "TOKEN=$TOKEN" >> $GITHUB_ENV
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}?audience=sts.amazonaws.com" | jq -r '.value')
 
           echo "--- Decoded Header ---"
           echo "$TOKEN" | cut -d "." -f1 | base64 -d
+
           echo "--- Decoded Payload ---"
           echo "$TOKEN" | cut -d "." -f2 | base64 -d
-
-      - name: Configure AWS credentials from OIDC
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
-          aws-region: ${{ vars.AWS_REGION }}
