@@ -1,8 +1,6 @@
-name: Terraform Apply AWS
+name: Terraform Apply AWS (Debug OIDC)
 
 on:
-  push:
-    branches: [ "main" ]
   workflow_dispatch:
 
 permissions:
@@ -10,23 +8,21 @@ permissions:
   contents: read
 
 jobs:
-  terraform-apply:
+  debug-oidc:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Configure AWS credentials from OIDC
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
-          aws-region: ${{ vars.AWS_REGION }}
+      - name: Request GitHub OIDC token
+        id: oidc
+        run: |
+          echo "Fetching OIDC token..."
+          TOKEN=$(curl -sLS \
+            -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL?audience=sts.amazonaws.com" | jq -r '.value')
+          echo "TOKEN=$TOKEN" >> $GITHUB_ENV
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-
-      - name: Terraform Init
-        run: terraform -chdir=stacks/aws init
-
-      - name: Terraform Apply
-        run: terraform -chdir=stacks/aws apply -auto-approve
+          echo "--- Decoded Header ---"
+          echo "$TOKEN" | cut -d "." -f1 | base64 -d
+          echo "--- Decoded Payload ---"
