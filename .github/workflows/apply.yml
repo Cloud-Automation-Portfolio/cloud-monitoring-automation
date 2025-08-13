@@ -1,28 +1,33 @@
-name: Debug OIDC Token
+name: Apply Terraform
 
 on:
   workflow_dispatch:
 
-permissions:
-  id-token: write
-  contents: read
-
 jobs:
-  debug-oidc:
+  terraform:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Request GitHub OIDC token and decode
-        run: |
-          echo "Requesting OIDC token..."
-          TOKEN=$(curl -sLS \
-            -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-            "${ACTIONS_ID_TOKEN_REQUEST_URL}?audience=sts.amazonaws.com" | jq -r '.value')
+      - name: Configure AWS credentials from OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::788670788114:role/cma-github-actions-role
+          aws-region: us-east-1
 
-          echo "--- Decoded Header ---"
-          echo "$TOKEN" | cut -d "." -f1 | base64 -d
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
 
-          echo "--- Decoded Payload ---"
-          echo "$TOKEN" | cut -d "." -f2 | base64 -d
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve tfplan
