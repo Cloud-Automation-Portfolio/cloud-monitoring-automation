@@ -10,10 +10,10 @@ Automated lab to provision, monitor, and alert on AWS, Azure and Kubernetes work
 - [What I Built](#what-i-built)
 - [Diagram](#diagram)
 - [Objectives](#objectives)
-  - [First Minilab - AWS](#first-minilab-aws)
-  - [Second Minilab - Azure](#second-minilab-azure)
-  - [Third Minilab - AKS](#third-minilab-aks)
-  - [Bonus Minilab - Grafana and Prometheus](#bonus-minilab-grafana-and-prometheus)
+  - [1. AWS](#4.-aws)
+  - [2. Azure](#second-minilab-azure)
+  - [3. AKS](#third-minilab-aks)
+  - [4. Grafana and Prometheus](#bonus-minilab-grafana-and-prometheus)
 - [Screenshots](#screenshots)
 - [Lessons Learned](#lessons-learned)
 - [Notes and Limitations](#notes-and-limitations)
@@ -68,7 +68,7 @@ Without proactive monitoring, performance degradation or resource exhaustion in 
 
 ## Diagram
 
-![Architecture Diagram](diagram.png)
+![Architecture Diagram](diagram2.png)
 
 ---
 
