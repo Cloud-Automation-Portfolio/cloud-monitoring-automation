@@ -1,0 +1,25 @@
+﻿alertmanager:
+  enabled: true
+pushgateway:
+  enabled: true
+server:
+  service:
+    type: ClusterIP
+    port: 80
+  persistentVolume:
+    enabled: false
+kubeStateMetrics:
+  enabled: true
+nodeExporter:
+  enabled: true
+prometheus-node-exporter:
+  hostNetwork: false
+additionalScrapeConfigs:
+  - job_name: 'kubelet'
+    metrics_path: /metrics
+    scheme: https
+    tls_config:
+      insecure_skip_verify: true
+    static_configs:
+      - targets:
+        - kubelet.kube-system.svc.cluster.local:10250
