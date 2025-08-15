@@ -11,9 +11,9 @@ Automated lab to provision, monitor, and alert on AWS, Azure and Kubernetes work
 - [Diagram](#diagram)
 - [Objectives](#objectives)
   - [AWS](#aws)
-  - [2. Azure](#second-minilab-azure)
-  - [3. AKS](#third-minilab-aks)
-  - [4. Grafana and Prometheus](#bonus-minilab-grafana-and-prometheus)
+  - [Azure](#azure)
+  - [AKS](#aks)
+  - [Grafana and Prometheus](#grafana-and-prometheus)
 - [Screenshots](#screenshots)
 - [Lessons Learned](#lessons-learned)
 - [Notes and Limitations](#notes-and-limitations)
@@ -113,7 +113,7 @@ Without proactive monitoring, performance degradation or resource exhaustion in 
 
 ---
 
-##**Second Minilab - Azure**
+## Azure
 **2.1 Terraform**  
    - Initiated Terraform deployment for Azure infrastructure *(Screenshot: `terraform_apply_start.png`)*  
    - Successfully deployed Azure resources via Terraform *(Screenshot: `terraform_apply_success.png`)*  
@@ -134,7 +134,7 @@ Without proactive monitoring, performance degradation or resource exhaustion in 
 
 ---
 
-##**Third Minilab - AKS**
+## AKS
 **3.1 Preparation**  
    - Verified AKS nodes are in Ready state *(Screenshot: `AKS-Nodes-Ready.png`)*
    - Confirmed kubectl connection to AKS cluster *(Screenshot: `k8s_aks_kubectl_connected.png`)*   
@@ -148,7 +148,7 @@ Without proactive monitoring, performance degradation or resource exhaustion in 
 
 ---
 
-##**Bonus Lab - Grafana and Prometheus**
+## Grafana and Prometheus
 **4.1 Prometheus**  
    - Installed Prometheus on AKS via Helm *(Screenshot: `Prometheus-Deployed.png`)*   
    - Set up port forwarding for Prometheus dashboard *(Screenshot: `prometheus_portforward.png`)*    
