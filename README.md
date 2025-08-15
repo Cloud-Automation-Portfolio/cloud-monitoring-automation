@@ -2,4 +2,4 @@
 
 Currently in the making!
 
-![Architecture](diagram.png)
+![Architecture](diagram2.png)
