@@ -24,7 +24,7 @@ Automated lab to provision, monitor, and alert on AWS, Azure and Kubernetes work
 
 ## Overview
 
-This project demonstrates a full end-to-end **Cloud Monitoring Automation** setup across AWS, Azure and Kubernetes (AKS), integrating cloud-native monitoring tools (CloudWatch, Azure Monitor, Container Insights) with open-source observability platforms (Prometheus, Grafana) The lab showcases infrastructure deployment with Terraform, alert configuration, workload simulation for alert validation and visualization in live dashboards.
+This project demonstrates a full end-to-end **Cloud Monitoring Automation** setup, integrating cloud-native monitoring tools like CloudWatch, Azure Monitor and Container Insights, with open-source observability platforms. The lab showcases infrastructure deployment with Terraform, alert configuration, workload simulation for alert validation and visualization in live dashboards, **and it's separated in 4 minilabs; AWS, Azure, AKS and Grafana + Prometheus.**
 
 ---
 
@@ -41,6 +41,8 @@ Without proactive monitoring, performance degradation or resource exhaustion in 
 ---
 
 ## What I Built
+
+- 4 minilabs showcasing:
 
 **AWS CloudWatch Monitoring**
    - Terraform-provisioned AWS VPC, EC2 instance and CloudWatch alarms.
