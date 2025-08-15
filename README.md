@@ -10,7 +10,7 @@ Automated lab to provision, monitor, and alert on AWS, Azure and Kubernetes work
 - [What I Built](#what-i-built)
 - [Diagram](#diagram)
 - [Objectives](#objectives)
-  - [AWS](#aws)
+  - [1. AWS](#1.-aws)
   - [2. Azure](#second-minilab-azure)
   - [3. AKS](#third-minilab-aks)
   - [4. Grafana and Prometheus](#bonus-minilab-grafana-and-prometheus)
@@ -82,7 +82,7 @@ Without proactive monitoring, performance degradation or resource exhaustion in 
 
 ---
 
-##1. AWS
+## 1. AWS
 **1.1 Resource Creation**  
    - Provisioned AWS infrastructure with Terraform including VPC, subnets, EC2 instance, CloudWatch alarms and SNS topic *(Screenshot: `aws-terraform-apply-success.png`)*  
 
