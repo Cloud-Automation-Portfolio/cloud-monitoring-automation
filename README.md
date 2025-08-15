@@ -10,7 +10,7 @@ Automated lab to provision, monitor, and alert on AWS, Azure and Kubernetes work
 - [What I Built](#what-i-built)
 - [Diagram](#diagram)
 - [Objectives](#objectives)
-  - [1. AWS](#1.-aws)
+  - [AWS](#aws)
   - [2. Azure](#second-minilab-azure)
   - [3. AKS](#third-minilab-aks)
   - [4. Grafana and Prometheus](#bonus-minilab-grafana-and-prometheus)
