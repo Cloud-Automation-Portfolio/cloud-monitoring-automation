@@ -1,4 +1,4 @@
-# Cloud Monitoring Automation Lab – AWS, Azure, AKS, Prometheus & Grafana.
+# Monitoring Automation Lab – AWS, Azure, AKS, Prometheus & Grafana.
 
 Automated lab to provision, monitor, and alert on AWS, Azure and Kubernetes workloads using **Terraform**, **CloudWatch**, **Azure Monitor**, **Prometheus** and **Grafana**.
 
